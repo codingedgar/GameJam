@@ -10,7 +10,7 @@ public class GameManager : NetworkBehaviour
     static public GameManager s_Instance;
 
     //this is static so tank can be added even withotu the scene loaded (i.e. from lobby)
-    static public List<TankManager> m_Tanks = new List<TankManager>();             // A collection of managers for enabling and disabling different aspects of the tanks.
+    //static public List<TankManager> m_Tanks = new List<TankManager>();             // A collection of managers for enabling and disabling different aspects of the tanks.
 
     public int m_NumRoundsToWin = 5;          // The number of rounds a single player has to win to win the game.
     public float m_StartDelay = 3f;           // The delay between the start of RoundStarting and RoundPlaying phases.
@@ -65,38 +65,38 @@ public class GameManager : NetworkBehaviour
     /// <param name="localID">The localID. e.g. if 2 player are on the same machine this will be 1 & 2</param>
     static public void AddTank(GameObject tank, int playerNum, Color c, string name, int localID)
     {
-        TankManager tmp = new TankManager();
-        tmp.m_Instance = tank;
-        tmp.m_PlayerNumber = playerNum;
-        tmp.m_PlayerColor = c;
-        tmp.m_PlayerName = name;
-        tmp.m_LocalPlayerID = localID;
-        tmp.Setup();
+        //TankManager tmp = new TankManager();
+        //tmp.m_Instance = tank;
+        //tmp.m_PlayerNumber = playerNum;
+        //tmp.m_PlayerColor = c;
+        //tmp.m_PlayerName = name;
+        //tmp.m_LocalPlayerID = localID;
+        //tmp.Setup();
 
-        m_Tanks.Add(tmp);
+        //m_Tanks.Add(tmp);
     }
 
     public void RemoveTank(GameObject tank)
     {
-        TankManager toRemove = null;
-        foreach (var tmp in m_Tanks)
-        {
-            if (tmp.m_Instance == tank)
-            {
-                toRemove = tmp;
-                break;
-            }
-        }
+        //TankManager toRemove = null;
+        //foreach (var tmp in m_Tanks)
+        //{
+        //    if (tmp.m_Instance == tank)
+        //    {
+        //        toRemove = tmp;
+        //        break;
+        //    }
+        //}
 
-        if (toRemove != null)
-            m_Tanks.Remove(toRemove);
+        //if (toRemove != null)
+        //    m_Tanks.Remove(toRemove);
     }
 
     // This is called from start and will run each phase of the game one after another. ONLY ON SERVER (as Start is only called on server)
     private IEnumerator GameLoop()
     {
-        while (m_Tanks.Count < 2)
-            yield return null;
+        //while (m_Tanks.Count < 2)
+        //    yield return null;
 
         //wait to be sure that all are ready to start
         yield return new WaitForSeconds(2.0f);
@@ -282,33 +282,33 @@ public class GameManager : NetworkBehaviour
         int numTanksLeft = 0;
 
         // Go through all the tanks...
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            // ... and if they are active, increment the counter.
-            if (m_Tanks[i].m_TankRenderers.activeSelf)
-                numTanksLeft++;
-        }
+        //for (int i = 0; i < m_Tanks.Count; i++)
+        //{
+        //    // ... and if they are active, increment the counter.
+        //    if (m_Tanks[i].m_TankRenderers.activeSelf)
+        //        numTanksLeft++;
+        //}
 
         // If there are one or fewer tanks remaining return true, otherwise return false.
         return numTanksLeft <= 1;
     }
 
 
-    // This function is to find out if there is a winner of the round.
-    // This function is called with the assumption that 1 or fewer tanks are currently active.
-    private TankManager GetRoundWinner()
-    {
-        // Go through all the tanks...
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            // ... and if one of them is active, it is the winner so return it.
-            if (m_Tanks[i].m_TankRenderers.activeSelf)
-                return m_Tanks[i];
-        }
+    //// This function is to find out if there is a winner of the round.
+    //// This function is called with the assumption that 1 or fewer tanks are currently active.
+    //private TankManager GetRoundWinner()
+    //{
+    //    // Go through all the tanks...
+    //    for (int i = 0; i < m_Tanks.Count; i++)
+    //    {
+    //        // ... and if one of them is active, it is the winner so return it.
+    //        if (m_Tanks[i].m_TankRenderers.activeSelf)
+    //            return m_Tanks[i];
+    //    }
 
-        // If none of the tanks are active it is a draw so return null.
-        return null;
-    }
+    //    // If none of the tanks are active it is a draw so return null.
+    //    return null;
+    //}
 
 
     // This function is to find out if there is a winner of the game.
@@ -316,25 +316,25 @@ public class GameManager : NetworkBehaviour
     {
         int maxScore = 0;
 
-        // Go through all the tanks...
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            if(m_Tanks[i].m_Wins > maxScore)
-            {
-                maxScore = m_Tanks[i].m_Wins;
-            }
+        //// Go through all the tanks...
+        //for (int i = 0; i < m_Tanks.Count; i++)
+        //{
+        //    if(m_Tanks[i].m_Wins > maxScore)
+        //    {
+        //        maxScore = m_Tanks[i].m_Wins;
+        //    }
 
-            // ... and if one of them has enough rounds to win the game, return it.
-            if (m_Tanks[i].m_Wins == m_NumRoundsToWin)
-                return m_Tanks[i];
-        }
+        //    // ... and if one of them has enough rounds to win the game, return it.
+        //    if (m_Tanks[i].m_Wins == m_NumRoundsToWin)
+        //        return m_Tanks[i];
+        //}
 
-        //go throught a second time to enable/disable the crown on tanks
-        //(note : we don't enter it if the maxScore is 0, as no one is current leader yet!)
-        for (int i = 0; i < m_Tanks.Count && maxScore > 0; i++)
-        {
-            m_Tanks[i].SetLeader(maxScore == m_Tanks[i].m_Wins);
-        }
+        ////go throught a second time to enable/disable the crown on tanks
+        ////(note : we don't enter it if the maxScore is 0, as no one is current leader yet!)
+        //for (int i = 0; i < m_Tanks.Count && maxScore > 0; i++)
+        //{
+        //    m_Tanks[i].SetLeader(maxScore == m_Tanks[i].m_Wins);
+        //}
 
         // If no tanks have enough rounds to win, return null.
         return null;
@@ -359,11 +359,11 @@ public class GameManager : NetworkBehaviour
         message += "\n\n";
 
         // Go through all the tanks and display their scores with their 'PLAYER #' in their color.
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            message += "<color=#" + ColorUtility.ToHtmlStringRGB(m_Tanks[i].m_PlayerColor) + ">" + m_Tanks[i].m_PlayerName + "</color>: " + m_Tanks[i].m_Wins + " WINS " 
-                + (m_Tanks[i].IsReady()? "<size=15>READY</size>" : "") + " \n";
-        }
+        //for (int i = 0; i < m_Tanks.Count; i++)
+        //{
+        //    message += "<color=#" + ColorUtility.ToHtmlStringRGB(m_Tanks[i].m_PlayerColor) + ">" + m_Tanks[i].m_PlayerName + "</color>: " + m_Tanks[i].m_Wins + " WINS " 
+        //        + (m_Tanks[i].IsReady()? "<size=15>READY</size>" : "") + " \n";
+        //}
 
         //if (m_GameWinner != null)
         //    message += "\n\n<size=20 > Return to lobby in " + waitTime + "\nPress Fire to get ready</size>";
@@ -375,28 +375,28 @@ public class GameManager : NetworkBehaviour
     // This function is used to turn all the tanks back on and reset their positions and properties.
     private void ResetAllTanks()
     {
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            m_Tanks[i].m_SpawnPoint = m_SpawnPoint[m_Tanks[i].m_Setup.m_PlayerNumber];
-            m_Tanks[i].Reset();
-        }
+        //for (int i = 0; i < m_Tanks.Count; i++)
+        //{
+        //    m_Tanks[i].m_SpawnPoint = m_SpawnPoint[m_Tanks[i].m_Setup.m_PlayerNumber];
+        //    m_Tanks[i].Reset();
+        //}
     }
 
 
     private void EnableTankControl()
     {
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            m_Tanks[i].EnableControl();
-        }
+        //for (int i = 0; i < m_Tanks.Count; i++)
+        //{
+        //    m_Tanks[i].EnableControl();
+        //}
     }
 
 
     private void DisableTankControl()
     {
-        for (int i = 0; i < m_Tanks.Count; i++)
-        {
-            m_Tanks[i].DisableControl();
-        }
+        //for (int i = 0; i < m_Tanks.Count; i++)
+        //{
+        //    m_Tanks[i].DisableControl();
+        //}
     }
 }
