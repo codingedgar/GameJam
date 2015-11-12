@@ -1,0 +1,9 @@
+GameJam/Library/
+GameJam/LibraryIOS/
+GameJam/LibraryAndroid/
+GameJam/Temp/
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
