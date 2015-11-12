@@ -2,6 +2,10 @@ GameJam/Library/
 GameJam/LibraryIOS/
 GameJam/LibraryAndroid/
 GameJam/Temp/
+tanker/Library/
+tanker/LibraryIOS/
+tanker/LibraryAndroid/
+tanker/Temp/
 *.csproj
 *.pidb
 *.unityproj
