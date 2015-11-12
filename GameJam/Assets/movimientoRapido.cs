@@ -25,9 +25,9 @@ public class movimientoRapido : NetworkBehaviour
     private void Start()
     {
         // The axes are based on player number.
-        m_MovementAxis = "Vertical" + (m_LocalID + 1);
-        m_TurnAxis = "Horizontal" + (m_LocalID + 1);
-        
+        m_MovementAxis = "Vertical";// + (m_LocalID + 1);
+        m_TurnAxis = "Horizontal";// + (m_LocalID + 1);
+
     }
 
     private void Update()
@@ -36,8 +36,14 @@ public class movimientoRapido : NetworkBehaviour
             return;
 
         // Store the value of both input axes.
-        m_MovementInput = Input.GetAxis(m_MovementAxis);
-        m_TurnInput = Input.GetAxis(m_TurnAxis);
-        
+        if (Input.GetKey(KeyCode.W))
+        {
+
+            this.transform.position = new Vector3(this.transform.position.x - 1, this.transform.position.y, this.transform.position.z);
+        }
+
+        //m_MovementInput = Input.GetAxis(m_MovementAxis);
+        //m_TurnInput = Input.GetAxis(m_TurnAxis);
+
     }
 }
