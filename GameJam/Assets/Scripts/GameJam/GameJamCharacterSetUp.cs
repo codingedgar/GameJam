@@ -42,19 +42,19 @@ public class GameJamCharacterSetUp : NetworkBehaviour
         SetUp();
     }
 
-    //public override void OnStartServer()
-    //{
-    //    base.OnStartServer();
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
 
-    //    SetUp();
-    //}
+        SetUp();
+    }
 
-    //public override void OnStartLocalPlayer()
-    //{
-    //    base.OnStartLocalPlayer();
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
 
-    //    SetUp();
-    //}
+        SetUp();
+    }
 
     public void SetUp()
     {
