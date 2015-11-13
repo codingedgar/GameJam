@@ -19,6 +19,9 @@ public class GameJamMessageClient : NetworkBehaviour {
 
 	[ClientCallback]
 	void Update() {
+		if (!isLocalPlayer)
+			return;
+
 		if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
 			CmdSendBoxMessage(0);
 		if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
