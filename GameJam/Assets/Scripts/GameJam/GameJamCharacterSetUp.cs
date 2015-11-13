@@ -7,7 +7,7 @@ public class GameJamCharacterSetUp : NetworkBehaviour
 {
 
 
-    public override void OnStartClient()
+    public override void OnStartLocalPlayer()
     {
         base.OnStartClient();
 
