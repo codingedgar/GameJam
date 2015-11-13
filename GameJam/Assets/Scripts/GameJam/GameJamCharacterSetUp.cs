@@ -5,25 +5,8 @@ using UnityEngine.Networking;
 
 public class GameJamCharacterSetUp : NetworkBehaviour
 {
-
-    public override void OnStartClient()
-    {
-        
-    }
     
-    [ServerCallback]
-    public override void OnStartLocalPlayer()
-    {
-        RpcsetUp();
-    }
-
-    public override void OnStartServer()
-    {
-
-    }
-    
-    [ClientRpc]
-    public void RpcsetUp()
+    public void SetUp()
     {
         activateInputControllers(this.gameObject, isLocalPlayer);
         activateCamera(this.gameObject, isLocalPlayer);

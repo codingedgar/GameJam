@@ -37,7 +37,9 @@ public class GameJamCharacterManager
     public void Setup()
     {
 
-        m_Instance.AddComponent<GameJamCharacterSetUp>();
+        GameJamCharacterSetUp rapido = m_Instance.AddComponent<GameJamCharacterSetUp>();
+
+        rapido.SetUp();
 
         return;
         // Get references to the components.
