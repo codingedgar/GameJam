@@ -72,9 +72,9 @@ public class GameJamMessageHandler2 : NetworkBehaviour
     
     private void clientSideMessage(string message)
     {
-
+        CmdServerReceiveMessage(message);
     }
-
+    
     private void serverSideMessage(string message)
     {
         RpcClientReceiveMessage(message);
@@ -86,7 +86,8 @@ public class GameJamMessageHandler2 : NetworkBehaviour
         receiveMessage(message);
     }
     
-    private void serverReceiveMessage(string message)
+    [Command]
+    private void CmdServerReceiveMessage(string message)
     {
         receiveMessage(message);
     }
