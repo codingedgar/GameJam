@@ -11,12 +11,12 @@ public class GameJamCharacterSetUp : NetworkBehaviour
         
     }
     
+    [ServerCallback]
     public override void OnStartLocalPlayer()
     {
         RpcsetUp();
     }
 
-    [ServerCallback]
     public override void OnStartServer()
     {
 
