@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Portals : MonoBehaviour {
 
-    public int portalId;
+    public int portalIn;
+    public int portalOut;
 
 	void Start () {
 

@@ -33,8 +33,8 @@ public class PortalManager : MonoBehaviour {
 
     public static void ActivatePortal(GameObject portalEnter, GameObject userPortal){
 
-        int portalIndexOut = portalEnter.GetComponent<Portals>().portalId;
-        GameObject portalOut = instance.portalsElement[portalIndexOut + 1];
+        int portalOutId = portalEnter.GetComponent<Portals>().portalOut;
+        GameObject portalOut = instance.portalsElement.Find(x => x.GetComponent<Portals>().portalOut == portalOutId);
         userPortal.transform.position = portalOut.transform.position;
     }
 }
