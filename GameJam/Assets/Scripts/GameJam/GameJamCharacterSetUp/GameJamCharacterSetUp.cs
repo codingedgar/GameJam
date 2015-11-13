@@ -62,20 +62,25 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 
     public void SetUp()
     {
-
-        activateInputControllers(this.gameObject, isLocalPlayer);
-        activateMessageHandler();
-
         SetUpInit();
         if (!isServer)
         {
-            GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
             SetUpIfClient();
         }
     }
 
-    partial void SetUpInit();
-    partial void SetUpIfClient();
+    void SetUpInit()
+    {
+        activateInputControllers(this.gameObject, isLocalPlayer);
+        activateMessageHandler();
+        CameraController(this.gameObject, isLocalPlayer, GameJamColors.Blue);
+
+    }
+
+    void SetUpIfClient()
+    {
+        GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
+    }
 
     static public void activateInputControllers(GameObject characterObject, bool value)
     {
