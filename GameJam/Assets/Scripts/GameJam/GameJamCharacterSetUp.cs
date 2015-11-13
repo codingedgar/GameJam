@@ -3,11 +3,11 @@ using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.Networking;
 
-public class GameJamCharacterSetUp : NetworkBehaviour
+public partial class GameJamCharacterSetUp : NetworkBehaviour
 {
 
     #region Variables
-    
+
     public GameObject m_Crown;
 
     [Header("Network")]
@@ -34,7 +34,7 @@ public class GameJamCharacterSetUp : NetworkBehaviour
     #endregion
 
     #region Methods
-    
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -55,19 +55,24 @@ public class GameJamCharacterSetUp : NetworkBehaviour
 
         SetUp();
     }
-    
+
     public void SetUp()
     {
 
         activateInputControllers(this.gameObject, isLocalPlayer);
         activateCamera(this.gameObject, isLocalPlayer);
-		activateMessageHandler();
+        activateMessageHandler();
 
-		if (!isServer)
+        SetUpIfServer();
+        if (!isServer)
         {
             GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
+            SetUpIfClient();
         }
     }
+
+    partial void SetUpIfServer();
+    partial void SetUpIfClient();
 
     static public void activateCamera(GameObject chobj, bool value)
     {
@@ -79,8 +84,9 @@ public class GameJamCharacterSetUp : NetworkBehaviour
         characterObject.GetComponent<FirstPersonController>().enabled = value;
     }
 
-	public void activateMessageHandler() {
-		Messenger.Broadcast<Color>("activateMessageHandler",m_Color);
-	}
+    public void activateMessageHandler()
+    {
+        Messenger.Broadcast<Color>("activateMessageHandler", m_Color);
+    }
     #endregion
 }
