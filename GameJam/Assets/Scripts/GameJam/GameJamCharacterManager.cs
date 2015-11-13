@@ -1,8 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 [Serializable]
-public class GameJamCharacterManager : MonoBehaviour {
+public class GameJamCharacterManager
+{
 
     // This class is to manage various settings on a tank.
     // It works with the GameManager class to control how the tanks behave
@@ -29,8 +31,14 @@ public class GameJamCharacterManager : MonoBehaviour {
     public TankHealth m_Health;
     public TankSetup m_Setup;
 
+
+
+
     public void Setup()
     {
+
+        m_Instance.AddComponent<GameJamCharacterSetUp>();
+
         return;
         // Get references to the components.
         m_Movement = m_Instance.GetComponent<TankMovement>();
@@ -57,8 +65,7 @@ public class GameJamCharacterManager : MonoBehaviour {
         m_Setup.m_PlayerNumber = m_PlayerNumber;
         m_Setup.m_LocalID = m_LocalPlayerID;
     }
-
-
+    
     // Used during the phases of the game where the player shouldn't be able to control their tank.
     public void DisableControl()
     {

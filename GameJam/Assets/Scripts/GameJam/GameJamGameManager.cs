@@ -73,7 +73,6 @@ public class GameJamGameManager : NetworkBehaviour
         tmp.m_PlayerName = name;
         tmp.m_LocalPlayerID = localID;
         tmp.Setup();
-
         mCharacters.Add(tmp);
     }
 
