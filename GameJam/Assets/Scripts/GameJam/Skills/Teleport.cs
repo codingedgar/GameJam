@@ -35,7 +35,7 @@ public class Teleport : MonoBehaviour {
         
         if (other.gameObject == PortalManager.FindPortal(other.gameObject))
         {
-            
+            stepPortal = false;
         }
     }
 
