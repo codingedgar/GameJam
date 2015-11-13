@@ -5,12 +5,13 @@ using UnityEngine.Networking;
 using System.Collections.Generic;
 using UnityStandardAssets.Network;
 
-public class GameManager : NetworkBehaviour
+public class GameJamGameManager : NetworkBehaviour
 {
-    static public GameManager s_Instance;
 
-    //this is static so tank can be added even withotu the scene loaded (i.e. from lobby)
-    //static public List<TankManager> mCharacters = new List<TankManager>();             // A collection of managers for enabling and disabling different aspects of the tanks.
+    static public GameJamGameManager s_Instance;
+
+    //this is static so tank can be added even withotu the scene loaded(i.e.from lobby)
+    static public List<GameJamCharacterManager> mCharacters = new List<GameJamCharacterManager>();             // A collection of managers for enabling and disabling different aspects of the tanks.
 
     public int m_NumRoundsToWin = 5;          // The number of rounds a single player has to win to win the game.
     public float m_StartDelay = 3f;           // The delay between the start of RoundStarting and RoundPlaying phases.
@@ -36,8 +37,8 @@ public class GameManager : NetworkBehaviour
     private WaitForSeconds m_EndWait;           // Used to have a delay whilst the round or game ends.
 
     //private TankManager m_RoundWinner;          // Reference to the winner of the current round.  Used to make an announcement of who won.
-    
-        //private TankManager m_GameWinner;           // Reference to the winner of the game.  Used to make an announcement of who won.
+
+    //private TankManager m_GameWinner;           // Reference to the winner of the game.  Used to make an announcement of who won.
 
     void Awake()
     {
@@ -63,17 +64,17 @@ public class GameManager : NetworkBehaviour
     /// <param name="c">The color of the player, choosen in the lobby</param>
     /// <param name="name">The name of the Player, choosen in the lobby</param>
     /// <param name="localID">The localID. e.g. if 2 player are on the same machine this will be 1 & 2</param>
-    static public void AddTank(GameObject tank, int playerNum, Color c, string name, int localID)
+    static public void AddCharacter(GameObject tank, int playerNum, Color c, string name, int localID)
     {
-        //TankManager tmp = new TankManager();
-        //tmp.m_Instance = tank;
-        //tmp.m_PlayerNumber = playerNum;
-        //tmp.m_PlayerColor = c;
-        //tmp.m_PlayerName = name;
-        //tmp.m_LocalPlayerID = localID;
-        //tmp.Setup();
+        GameJamCharacterManager tmp = new GameJamCharacterManager();
+        tmp.m_Instance = tank;
+        tmp.m_PlayerNumber = playerNum;
+        tmp.m_PlayerColor = c;
+        tmp.m_PlayerName = name;
+        tmp.m_LocalPlayerID = localID;
+        tmp.Setup();
 
-        //mCharacters.Add(tmp);
+        mCharacters.Add(tmp);
     }
 
     public void RemoveTank(GameObject tank)

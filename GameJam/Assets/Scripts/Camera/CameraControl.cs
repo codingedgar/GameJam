@@ -79,14 +79,14 @@ public class CameraControl : MonoBehaviour
         int numTargets = 0;
             
         // Go through all the targets and add their positions together.
-        //for (int i = 0; i < GameManager.m_Tanks.Count; i++)
+        //for (int i = 0; i < GameManager.mCharacters.Count; i++)
         //{
         //    // If the target isn't active, go on to the next one.
-        //    if (!GameManager.m_Tanks[i].m_Instance.activeSelf)
+        //    if (!GameManager.mCharacters[i].m_Instance.activeSelf)
         //        continue;
 
         //    // Add to the average and increment the number of targets in the average.
-        //    average += GameManager.m_Tanks[i].m_Instance.transform.position;
+        //    average += GameManager.mCharacters[i].m_Instance.transform.position;
         //    numTargets++;
         //}
 
@@ -131,14 +131,14 @@ public class CameraControl : MonoBehaviour
         float furthestDistance = 0f;
 
         // Go through all the targets and if they are further away use that distance instead.
-        //for (int i = 0; i < GameManager.m_Tanks.Count; i++)
+        //for (int i = 0; i < GameManager.mCharacters.Count; i++)
         //{
         //    // If the target isn't active, on to the next one.
-        //    if (!GameManager.m_Tanks[i].m_Instance.activeSelf)
+        //    if (!GameManager.mCharacters[i].m_Instance.activeSelf)
         //        continue;
 
         //    // Find the distance from the camera's desired position to the target.
-        //    float targetDistance = (desiredPosition - GameManager.m_Tanks[i].m_Instance.transform.position).magnitude;
+        //    float targetDistance = (desiredPosition - GameManager.mCharacters[i].m_Instance.transform.position).magnitude;
 
         //    // If it's greater than the current furthest distance, it's the furthest distance.
         //    if (targetDistance > furthestDistance)
