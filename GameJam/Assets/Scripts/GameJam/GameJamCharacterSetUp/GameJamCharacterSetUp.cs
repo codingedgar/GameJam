@@ -60,10 +60,9 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
     {
 
         activateInputControllers(this.gameObject, isLocalPlayer);
-        activateCamera(this.gameObject, isLocalPlayer);
         activateMessageHandler();
 
-        SetUpIfServer();
+        SetUpInit();
         if (!isServer)
         {
             GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
@@ -71,13 +70,8 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
         }
     }
 
-    partial void SetUpIfServer();
+    partial void SetUpInit();
     partial void SetUpIfClient();
-
-    static public void activateCamera(GameObject chobj, bool value)
-    {
-        chobj.GetComponentInChildren<Camera>().enabled = value;
-    }
 
     static public void activateInputControllers(GameObject characterObject, bool value)
     {
