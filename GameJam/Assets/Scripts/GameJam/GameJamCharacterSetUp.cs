@@ -5,7 +5,21 @@ using UnityEngine.Networking;
 
 public class GameJamCharacterSetUp : NetworkBehaviour
 {
-    
+
+    public override void OnStartServer()
+    {
+        
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+        SetUp();        
+    }
+
+
+
     public void SetUp()
     {
         activateInputControllers(this.gameObject, isLocalPlayer);
