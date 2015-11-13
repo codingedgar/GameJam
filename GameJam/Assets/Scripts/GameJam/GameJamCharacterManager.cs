@@ -29,10 +29,16 @@ public class GameJamCharacterManager
     public TankMovement m_Movement;        // References to various objects for control during the different game phases.
     public TankShooting m_Shooting;
     public TankHealth m_Health;
-    public TankSetup m_Setup;
+    public GameJamCharacterSetUp m_Setup;
     
     public void Setup()
     {
+        
+        //setup is use for diverse Network Related sync
+        m_Setup.m_Color = m_PlayerColor;
+        m_Setup.m_PlayerName = m_PlayerName;
+        m_Setup.m_PlayerNumber = m_PlayerNumber;
+        m_Setup.m_LocalID = m_LocalPlayerID;
         
 
         return;
@@ -40,7 +46,7 @@ public class GameJamCharacterManager
         m_Movement = m_Instance.GetComponent<TankMovement>();
         m_Shooting = m_Instance.GetComponent<TankShooting>();
         m_Health = m_Instance.GetComponent<TankHealth>();
-        m_Setup = m_Instance.GetComponent<TankSetup>();
+        m_Setup = m_Instance.GetComponent<GameJamCharacterSetUp>();
 
         // Get references to the child objects.
         m_TankRenderers = m_Health.m_TankRenderers;
@@ -55,11 +61,6 @@ public class GameJamCharacterManager
         m_Shooting.m_PlayerNumber = m_PlayerNumber;
         m_Shooting.m_localID = m_LocalPlayerID;
 
-        //setup is use for diverse Network Related sync
-        m_Setup.m_Color = m_PlayerColor;
-        m_Setup.m_PlayerName = m_PlayerName;
-        m_Setup.m_PlayerNumber = m_PlayerNumber;
-        m_Setup.m_LocalID = m_LocalPlayerID;
     }
     
     // Used during the phases of the game where the player shouldn't be able to control their tank.
@@ -86,7 +87,7 @@ public class GameJamCharacterManager
 
     public void SetLeader(bool leader)
     {
-        m_Setup.SetLeader(leader);
+        //m_Setup.SetLeader(leader);
     }
 
     public bool IsReady()
