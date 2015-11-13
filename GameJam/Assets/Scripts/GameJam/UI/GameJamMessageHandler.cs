@@ -23,40 +23,39 @@ public class GameJamMessageHandler : NetworkBehaviour
 		_lerpingTime = 1f / lerpingTime;
 	}
 
-	[ClientCallback]
 	public void Update() {
 
 		if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-			CmdReceiveMessage("Follow Me!");
+			RpcReceiveMessage("Follow Me!");
 
 		if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-			CmdReceiveMessage("Whats This?");
+			RpcReceiveMessage("Whats This?");
 
 		if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-			CmdReceiveMessage("Action!");
+			RpcReceiveMessage("Action!");
 
 		if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
-			CmdReceiveMessage("My Bad XD");
+			RpcReceiveMessage("My Bad XD");
 
 		if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
-			CmdReceiveMessage("NO!!!");
+			RpcReceiveMessage("NO!!!");
 
 		if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
-			CmdReceiveMessage("Pushing Box");
+			RpcReceiveMessage("Pushing Box");
 
 		if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7))
-			CmdReceiveMessage("Broken Wall");
+			RpcReceiveMessage("Broken Wall");
 
 		if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8))
-			CmdReceiveMessage("Moving Platform");
+			RpcReceiveMessage("Moving Platform");
 
 		if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9))
-			CmdReceiveMessage("Portal");
+			RpcReceiveMessage("Portal");
 
 	}
 	
-	[Command]
-	public void CmdReceiveMessage(string message) {
+	[ClientRpc]
+	public void RpcReceiveMessage(string message) {
 		messageHolder.text = message;
 		StopAllCoroutines();
 		transform.localPosition = hidePosition;
