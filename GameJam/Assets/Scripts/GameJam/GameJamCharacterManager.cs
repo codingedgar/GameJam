@@ -30,10 +30,7 @@ public class GameJamCharacterManager
     public TankShooting m_Shooting;
     public TankHealth m_Health;
     public TankSetup m_Setup;
-
-
-
-
+    
     public void Setup()
     {
         
