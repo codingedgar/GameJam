@@ -74,6 +74,7 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
         activateInputControllers(this.gameObject, isLocalPlayer);
         activateMessageHandler();
         CameraController(this.gameObject, isLocalPlayer, GameJamColors.Blue);
+        this.gameObject.AddComponent<Teleport>();
 
     }
 

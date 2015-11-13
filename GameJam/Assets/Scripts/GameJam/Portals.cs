@@ -15,11 +15,10 @@ public class Portals : MonoBehaviour {
 	void Update () {
 	
 	}
-
+    /*
     void OnTriggerEnter(Collider col) {
 
-        Debug.Log("toque");
         PortalManager.ActivatePortal(this.gameObject, col.gameObject);
 
-    }
+    }*/
 }
