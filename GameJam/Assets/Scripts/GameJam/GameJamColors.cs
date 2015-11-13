@@ -10,8 +10,8 @@ public enum GameJamColors
     White,
     Red,
     Blue,
+    Green,
     Yellow,
-    Green
 }
 
 public static class GameJamLayerExtentions
