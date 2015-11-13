@@ -12,6 +12,10 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 
     [Header("Network")]
     [Space]
+
+    [SyncVar]
+    public GameJamColors gjColor;
+
     [SyncVar]
     public Color m_Color;
 

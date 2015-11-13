@@ -5,14 +5,17 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace UnityStandardAssets.Network
 {
     //Player entry in the lobby. Handle selecting color/setting name & getting ready for the game
     //Any LobbyHook can then grab it and pass those value to the game player prefab (see the Pong Example in the Samples Scenes)
+    
     public class LobbyPlayer : NetworkLobbyPlayer
     {
         static Color[] Colors = new Color[] { Color.red, Color.blue, Color.green, Color.yellow };
+        
 
         //used on server to avoid assigning the same color to two player
         static List<int> _colorInUse = new List<int>();
@@ -80,14 +83,14 @@ namespace UnityStandardAssets.Network
             if (isLocalPlayer &&  (obj == null || !obj.isFocused) )
             {
                 int localIdx = playerControllerId + 1;
-                if (!readyToBegin && Input.GetButtonDown("Fire"+ localIdx))
-                {
-                    if(readyButton.IsActive() && readyButton.IsInteractable())
-                        SendReadyToBeginMessage();
-                }
+                //if (!readyToBegin && Input.GetButtonDown("Fire"+ localIdx))
+                //{
+                //    if(readyButton.IsActive() && readyButton.IsInteractable())
+                //        SendReadyToBeginMessage();
+                //}
 
 
-                if (Input.GetAxis("Vertical" + localIdx) > 0.5f)
+                if (Input.GetAxis("Vertical") > 0.5f)
                 {
                    if(!changedColor)
                     {
@@ -103,7 +106,7 @@ namespace UnityStandardAssets.Network
         }
 
         void ChangeReadyButtonColor(Color c)
-        {
+            {
             ColorBlock b = readyButton.colors;
             b.normalColor = c;
             b.pressedColor = c;
@@ -281,6 +284,7 @@ namespace UnityStandardAssets.Network
 
         public void OnDestroy()
         {
+            
             int idx = System.Array.IndexOf(Colors, playerColor);
 
             if (idx < 0)

@@ -40,7 +40,7 @@ public class GameJamCharacterManager
         m_Setup.m_PlayerName = m_PlayerName;
         m_Setup.m_PlayerNumber = m_PlayerNumber;
         m_Setup.m_LocalID = m_LocalPlayerID;
-        
+        m_Setup.gjColor = GameJamColorsExtentions.ColorToEnum(m_PlayerColor);
 
         return;
         // Get references to the components.

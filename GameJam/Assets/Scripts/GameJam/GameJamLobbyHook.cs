@@ -12,6 +12,8 @@ public class GameJamLobbyHook : UnityStandardAssets.Network.LobbyHook
         UnityStandardAssets.Network.LobbyPlayer lp = lobbyPlayer.GetComponent<UnityStandardAssets.Network.LobbyPlayer>();
 
         if (lp != null)
+        {
             GameJamGameManager.AddCharacter(gamePlayer, lp.slot, lp.playerColor, lp.nameInput.text, lp.playerControllerId);
+        }
     }
 }
