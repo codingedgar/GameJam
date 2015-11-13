@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 54b6d6d9737a483489e3b4e4889f248e
-timeCreated: 1447389894
+guid: 6491c97621f56a847a992d2c787018a6
+timeCreated: 1447440153
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Sphere001
+    4300000: BAE_Bot_01
   materials:
     importMaterials: 1
     materialName: 0
