@@ -80,6 +80,7 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
     void SetUpIfClient()
     {
         GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
+		addMessageClient();
     }
 
     static public void activateInputControllers(GameObject characterObject, bool value)
