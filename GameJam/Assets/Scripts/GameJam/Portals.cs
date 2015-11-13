@@ -16,7 +16,7 @@ public class Portals : MonoBehaviour {
 	
 	}
 
-    void OnTriggerEnter(Collider col) {
+    void OnColliderEnter(Collider col) {
 
         Debug.Log("toque");
         PortalManager.ActivatePortal(this.gameObject, col.gameObject);
