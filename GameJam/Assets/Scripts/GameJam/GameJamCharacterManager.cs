@@ -35,6 +35,7 @@ public class GameJamCharacterManager
     {
         
         //setup is use for diverse Network Related sync
+        m_Setup = m_Instance.GetComponent<GameJamCharacterSetUp>();
         m_Setup.m_Color = m_PlayerColor;
         m_Setup.m_PlayerName = m_PlayerName;
         m_Setup.m_PlayerNumber = m_PlayerNumber;
@@ -46,7 +47,6 @@ public class GameJamCharacterManager
         m_Movement = m_Instance.GetComponent<TankMovement>();
         m_Shooting = m_Instance.GetComponent<TankShooting>();
         m_Health = m_Instance.GetComponent<TankHealth>();
-        m_Setup = m_Instance.GetComponent<GameJamCharacterSetUp>();
 
         // Get references to the child objects.
         m_TankRenderers = m_Health.m_TankRenderers;
