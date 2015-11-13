@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 
-public class TankLobbyHook : UnityStandardAssets.Network.LobbyHook
+public class GameJamLobbyHook : UnityStandardAssets.Network.LobbyHook
 {
     public override void OnLobbyServerSceneLoadedForPlayer(NetworkManager manager, GameObject lobbyPlayer, GameObject gamePlayer)
     {
@@ -12,6 +12,6 @@ public class TankLobbyHook : UnityStandardAssets.Network.LobbyHook
         UnityStandardAssets.Network.LobbyPlayer lp = lobbyPlayer.GetComponent<UnityStandardAssets.Network.LobbyPlayer>();
 
         if (lp != null)
-            GameManager.AddTank(gamePlayer, lp.slot, lp.playerColor, lp.nameInput.text, lp.playerControllerId);
+            GameJamGameManager.AddCharacter(gamePlayer, lp.slot, lp.playerColor, lp.nameInput.text, lp.playerControllerId);
     }
 }
