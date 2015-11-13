@@ -34,7 +34,7 @@ public class PortalManager : MonoBehaviour {
     public static void ActivatePortal(GameObject portalEnter, GameObject userPortal){
 
         int portalOutId = portalEnter.GetComponent<Portals>().portalOut;
-        GameObject portalOut = instance.portalsElement.Find(x => x.GetComponent<Portals>().portalOut == portalOutId);
+        GameObject portalOut = instance.portalsElement.Find(x => x.GetComponent<Portals>().portalIn == portalOutId);
         userPortal.transform.position = portalOut.transform.position;
     }
 }
