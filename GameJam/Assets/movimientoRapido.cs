@@ -20,8 +20,8 @@ public class movimientoRapido : NetworkBehaviour
         /*if (!isLocalPlayer)
             return;
             */
-        float h = Input.GetAxisRaw("Horizontal1");
-        float v = Input.GetAxisRaw("Vertical1");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
         Move(h, v);
 
