@@ -13,7 +13,7 @@ public class GameJamCharacterSetUp : NetworkBehaviour
     
     public override void OnStartLocalPlayer()
     {
-        setUp();
+        RpcsetUp();
     }
     
     public override void OnStartServer()
@@ -22,7 +22,7 @@ public class GameJamCharacterSetUp : NetworkBehaviour
     }
     
     [ClientRpc]
-    public void setUp()
+    public void RpcsetUp()
     {
         activateInputControllers(this.gameObject, isLocalPlayer);
         activateCamera(this.gameObject, isLocalPlayer);
