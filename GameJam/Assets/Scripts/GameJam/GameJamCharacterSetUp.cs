@@ -61,8 +61,9 @@ public class GameJamCharacterSetUp : NetworkBehaviour
 
         activateInputControllers(this.gameObject, isLocalPlayer);
         activateCamera(this.gameObject, isLocalPlayer);
-        
-        if (!isServer)
+		activateMessageHandler();
+
+		if (!isServer)
         {
             GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
         }
@@ -77,5 +78,9 @@ public class GameJamCharacterSetUp : NetworkBehaviour
     {
         characterObject.GetComponent<FirstPersonController>().enabled = value;
     }
+
+	public void activateMessageHandler() {
+		Messenger.Broadcast<Color>("activateMessageHandler",m_Color);
+	}
     #endregion
 }
