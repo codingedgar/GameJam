@@ -6,16 +6,30 @@ using UnityEngine.Networking;
 public class GameJamCharacterSetUp : NetworkBehaviour
 {
 
-
-    public override void OnStartLocalPlayer()
+    public override void OnStartServer()
     {
-        base.OnStartLocalPlayer();
+        base.OnStartServer();
 
+        setUp();
+
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+
+        setUp();
+    }
+
+    public void setUp()
+    {
 
 
         activateInputControllers(this.gameObject, isLocalPlayer);
         activateCamera(this.gameObject, isLocalPlayer);
+
     }
+
 
     static public void activateCamera(GameObject chobj, bool value)
     {
