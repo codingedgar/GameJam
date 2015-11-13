@@ -13,16 +13,17 @@ public class GameJamCharacterCameraController : MonoBehaviour
     #region Methods
 
 
-    public void Init(bool activate, GameJamColors color)
+    public void Init(bool isLocalPlayer, GameJamColors color)
     {
-        thisCamera = this.GetComponent<Camera>();
-        if (activate)
+        thisCamera = this.GetComponentInChildren<Camera>();
+        thisCamera.enabled = isLocalPlayer;
+        if (isLocalPlayer)
         {
-            thisCamera.gameObject.layer = LayerMask.NameToLayer(color.EnumToLayerName());
+            //thisCamera.gameObject.layer = LayerMask.NameToLayer(color.EnumToLayerName());
         }
         else
         {
-            thisCamera.enabled = false;
+            //thisCamera.enabled = false;
         }
     }
 

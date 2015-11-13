@@ -7,11 +7,15 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 {
     #region Methods
     
-    static public void CameraController(GameObject GO, bool value, GameJamColors color)
+    static public void CameraController(GameObject GO, bool isLocalPlayer, GameJamColors color)
     {
-        GameJamCharacterCameraController aux = GO.GetComponentInChildren<Camera>().gameObject.AddComponent<GameJamCharacterCameraController>();
+        GameJamCharacterCameraController aux = null;
 
-        aux.Init(value, color);
+        aux = GO.GetComponent<GameJamCharacterCameraController>();
+
+        if (!aux) aux = GO.gameObject.AddComponent<GameJamCharacterCameraController>();
+
+        aux.Init(isLocalPlayer, color);
     }
     
     #endregion
