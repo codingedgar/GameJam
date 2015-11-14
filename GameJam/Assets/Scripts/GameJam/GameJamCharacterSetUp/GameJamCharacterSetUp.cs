@@ -75,21 +75,21 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
         activateMessageHandler();
         CameraController(this.gameObject, isLocalPlayer, GameJamColors.Blue);
         this.gameObject.AddComponent<Teleport>();
+		addMessageClient();
 
-    }
+	}
 	void addMessageClient()
 	{
 		if (isClient)
 		{
 			GameJamMessageClient gameJamMessageClient = GetComponent<GameJamMessageClient>();
-			gameJamMessageClient.m_color = m_Color == Color.red ? GameJamColors.Red : GameJamColors.Blue;
+			gameJamMessageClient.m_color = (int)gjColor;
 		}
 	}
 
 	void SetUpIfClient()
     {
         GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
-		addMessageClient();
     }
 
     static public void activateInputControllers(GameObject characterObject, bool value)

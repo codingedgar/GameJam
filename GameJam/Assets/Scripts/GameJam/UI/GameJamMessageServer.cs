@@ -7,21 +7,29 @@ using UnityEngine.Networking;
 public class GameJamMessageServer : NetworkBehaviour
 {
 	public GameJamMessageController[] messagesReference;
-	
+
 	private int[] updateValue;
 	
-	[ServerCallback]
-	void Start() {
-		GameJamMessageClient[] clients = FindObjectsOfType<GameJamMessageClient>();
-		foreach (GameJamMessageClient client in clients)
-			client.EventSendMessageDelegate += updateColor;
-		updateValue = new int[messagesReference.Length];
-		for (int i = 0; i < updateValue.Length; i++)
-			updateValue[i] = 0;
+	void Start()
+	{
+		//if (NetworkClient.active)
+		//{
+			GameJamMessageClient[] clients = FindObjectsOfType<GameJamMessageClient>();
+			foreach (GameJamMessageClient client in clients)
+			{
+
+				client.EventSendMessageDelegate += updateColor;
+				Debug.Log(client.name);
+			}
+			updateValue = new int[messagesReference.Length];
+			for (int i = 0; i < updateValue.Length; i++)
+				updateValue[i] = 0;
+		//}
 	}
 
 	[ServerCallback]
-	void Update() {
+	void Update()
+	{
 		for (int i = 0; i < updateValue.Length; i++)
 		{
 			checkForSpecificMessage(updateValue[i], messagesReference[i]);
@@ -30,8 +38,10 @@ public class GameJamMessageServer : NetworkBehaviour
 		}
 	}
 
-	void checkForSpecificMessage(int messageValue, GameJamMessageController messageController) {
-		switch (messageValue) {
+	void checkForSpecificMessage(int messageValue, GameJamMessageController messageController)
+	{
+		switch (messageValue)
+		{
 			case 1:
 				messageController.RpcReceiveMessage("Follow Me!");
 				break;
@@ -64,7 +74,9 @@ public class GameJamMessageServer : NetworkBehaviour
 		}
 	}
 
-	void updateColor(int message, int color) {
-		updateValue[color - 1] = message;
+	public void updateColor(int message, int color)
+	{
+		if (updateValue != null)
+			updateValue[color - 1] = message;
 	}
 }

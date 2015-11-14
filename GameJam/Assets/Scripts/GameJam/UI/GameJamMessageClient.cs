@@ -6,15 +6,22 @@ public class GameJamMessageClient : NetworkBehaviour {
 
 	public delegate void MessageBoxDelegate(int message, int color);
 
+	//[SyncVar]
+	//public GameJamColors m_color = GameJamColors.Red;
 	[SyncVar]
-	public GameJamColors m_color = GameJamColors.Red;
+	public int m_color;
 
 	[SyncEvent]
 	public event MessageBoxDelegate EventSendMessageDelegate;
 
 	[Command]
-	public void CmdSendBoxMessage(int message) {
-		EventSendMessageDelegate(message, (int)m_color);
+	public void CmdSendBoxMessage(int message)
+	{
+		//Debug.Log(message + " " + m_color);
+		//EventSendMessageDelegate(message, (int)m_color);
+		GameJamMessageServer[] servers = FindObjectsOfType<GameJamMessageServer>();
+		foreach(GameJamMessageServer server in servers)
+			server.updateColor(message, m_color);
 	}
 
 	[ClientCallback]
