@@ -10,29 +10,35 @@ public class GameJamMessageClient : MonoBehaviour {
 	//public GameJamColors m_color = GameJamColors.Red;
 	//[SyncVar]
 	public int m_color;
+	public bool isLocalPlayer = false;
 
 	//[SyncEvent]
 	//public event MessageBoxDelegate EventSendMessageDelegate;
 
-	public GameJamMessageServer server;
+	public GameJamMessageServer _gms;
 
 	//[ClientCallback]
 	//void Start() {
 	//	server = FindObjectOfType<GameJamMessageServer>();//.updateColor(message, m_color);
 	//}
 
-	//[Command]
+	void Setup(GameJamMessageServer gms)
+	{
+		_gms = gms;
+	}
+
+	[Command]
 	public void CmdSendBoxMessage(int message)
 	{
 		//Debug.Log(message + " " + m_color);
 		//EventSendMessageDelegate(message, (int)m_color);
-		FindObjectOfType<GameJamMessageServer>().updateColor(message, m_color);
+		_gms.updateRed = message;
 	}
 
 	//[ClientCallback]
 	void Update() {
-		//if (!isLocalPlayer)
-		//	return;
+		if (!isLocalPlayer)
+			return;
 
 		if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
 			CmdSendBoxMessage(0);

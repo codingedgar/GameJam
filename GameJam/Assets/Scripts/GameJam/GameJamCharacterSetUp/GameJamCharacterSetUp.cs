@@ -79,14 +79,7 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 		addMessageClient();
 
 	}
-	void addMessageClient()
-	{
-		if (isClient)
-		{
-			GameJamMessageClient gameJamMessageClient = GetComponent<GameJamMessageClient>();
-			gameJamMessageClient.m_color = (int)gjColor;
-		}
-	}
+	
 
 	void SetUpIfClient()
     {
