@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class GameJamMessageServer : NetworkBehaviour
+public class GameJamMessageServer : MonoBehaviour
 {
 	public GameJamMessageController[] messagesReference;
 
@@ -27,7 +27,7 @@ public class GameJamMessageServer : NetworkBehaviour
 		//}
 	}
 
-	[ServerCallback]
+	//[ServerCallback]
 	void Update()
 	{
 		for (int i = 0; i < updateValue.Length; i++)
@@ -78,7 +78,5 @@ public class GameJamMessageServer : NetworkBehaviour
 	{
 		if (updateValue != null)
 			updateValue[color - 1] = message;
-		else
-			Debug.Log("LOL");
 	}
 }

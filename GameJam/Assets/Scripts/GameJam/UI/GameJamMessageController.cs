@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class GameJamMessageController : NetworkBehaviour {
+public class GameJamMessageController : MonoBehaviour {
 
 	public float lerpingTime = 1;
 	public float showedTime = 3;
@@ -23,7 +23,7 @@ public class GameJamMessageController : NetworkBehaviour {
 		_lerpingTime = 1f / lerpingTime;
 	}
 
-	[ClientRpc]
+	//[ClientRpc]
 	public void RpcReceiveMessage(string message)
 	{
 		messageHolder.text = message;
