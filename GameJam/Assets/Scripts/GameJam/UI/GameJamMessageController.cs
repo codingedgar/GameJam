@@ -4,9 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class GameJamMessageController : MonoBehaviour {
-
-	public int id;
-
+	
 	public float lerpingTime = 1;
 	public float showedTime = 3;
 
@@ -34,13 +32,13 @@ public class GameJamMessageController : MonoBehaviour {
 	void Update() {
 		if (_gms == null)
 			_gms = FindObjectOfType<GameJamMessageServer>();
-		if (id == 1 && _gms.updateRed > 0)
+		if (_gms.updateRed > 0)
 			checkForSpecificMessage(ref _gms.updateRed);
-		if (id == 2 && _gms.updateBlue > 0)
+		if (_gms.updateBlue > 0)
 			checkForSpecificMessage(ref _gms.updateBlue);
-		if (id == 3 && _gms.updateGreen > 0)
+		if (_gms.updateGreen > 0)
 			checkForSpecificMessage(ref _gms.updateGreen);
-		if (id == 4 && _gms.updateYellow > 0)
+		if (_gms.updateYellow > 0)
 			checkForSpecificMessage(ref _gms.updateYellow);
 	}
 
