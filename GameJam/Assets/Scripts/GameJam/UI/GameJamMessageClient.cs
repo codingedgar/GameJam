@@ -45,7 +45,7 @@ public class GameJamMessageClient : NetworkBehaviour {
 			_gms.updateYellow = message;
 	}
 
-	//[ClientCallback]
+	[ClientCallback]
 	void Update() {
 
 		if (!isLocalPlayer)
