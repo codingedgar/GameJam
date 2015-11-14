@@ -1,57 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class PlatformManager : MonoBehaviour {
+public class PlatformManager : MonoBehaviour
+{
 
-	private List<GameObject> platformMovable;
-	public static PlatformManager instance;
-	public bool up;
-    void Awake() {
+    private List<GameObject> platformMovable;
+    public static PlatformManager instance;
+    public bool up;
+    void Awake()
+    {
 
- 		instance = this;
-		platformMovable = new List<GameObject>();
+        instance = this;
+        platformMovable = new List<GameObject>();
 
     }
 
-	void Start () {
-	
+    void Start()
+    {
 
 
-	}
-	
-	void Update () {
-	
-	}
+
+    }
+
+    void Update()
+    {
+
+    }
 
     public static void AddPlatform(GameObject platform)
     {
 
-		instance.platformMovable.Add(platform);
+        instance.platformMovable.Add(platform);
 
     }
 
-	public static GameObject FindPlatform(GameObject platform){
+    public static GameObject FindPlatform(GameObject platform)
+    {
 
-		GameObject platformFind = instance.platformMovable.Find(x => x == platform);
+        GameObject platformFind = instance.platformMovable.Find(x => x == platform);
 
-		return platformFind;
+        return platformFind;
     }
 
-	public static void ActivePlatform(GameObject platform) {
+    public static void ActivePlatform(GameObject platform)
+    {
 
-		instance.up = platform.GetComponent<Platform> ().up;
-		GameObject pointInit = platform.GetComponent<Platform> ().initPoint;
-		GameObject pointEnd = platform.GetComponent<Platform> ().endPoint;
+        instance.up = platform.GetComponent<Platform>().up;
+        Transform platformTransform = platform.GetComponent<NetworkTransform>().transform;
 
-		if (!instance.up) {
-			platform.transform.position = Vector3.Lerp (platform.transform.position, pointEnd.transform.position, 0.5f);
-			platform.GetComponent<Platform> ().up = true;
-		} else {
-			platform.transform.position = Vector3.Lerp (platform.transform.position, pointInit.transform.position, 0.5f);
-			platform.GetComponent<Platform> ().up = false;
-		}
+        GameObject pointInit = platform.GetComponent<Platform>().initPoint;
+        GameObject pointEnd = platform.GetComponent<Platform>().endPoint;
+
+        if (!instance.up)
+        {
+            platformTransform.position = Vector3.Lerp(platform.transform.position, pointEnd.transform.position, 0.5f);
+            platform.GetComponent<Platform>().up = true;
+        }
+        else
+        {
+            platformTransform.position = Vector3.Lerp(platform.transform.position, pointInit.transform.position, 0.5f);
+            platform.GetComponent<Platform>().up = false;
+        }
 
     }
-	
+
 }

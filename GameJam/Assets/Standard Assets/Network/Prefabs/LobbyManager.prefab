@@ -545,6 +545,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &154492
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22446406}
+  - 222: {fileID: 22224516}
+  - 114: {fileID: 11422792}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &155310
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +575,7 @@ GameObject:
   - 114: {fileID: 11466428}
   - 114: {fileID: 11475086}
   - 114: {fileID: 11415508}
+  - 114: {fileID: 11442358}
   m_Layer: 5
   m_Name: LobbyManager
   m_TagString: Untagged
@@ -1947,6 +1965,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11422792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11422868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2286,6 +2331,17 @@ MonoBehaviour:
   infoText: {fileID: 11480866}
   buttonText: {fileID: 11499128}
   singleButton: {fileID: 11480484}
+--- !u!114 &11442358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebafd87b547af714096a360b16aaf35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2517,7 +2573,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a9aaa1aab779dd14a914113907fd9a34, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecc96e8cc392c55478d5a14a88342c00, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2582,7 +2638,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.InputField+OnChangeEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_SelectionColor: {r: .294117659, g: .470588237, b: .741176486, a: .501960814}
-  m_Text: 127.0.0.1
+  m_Text: 192.168.1.137
   m_CaretBlinkRate: .850000024
 --- !u!114 &11451830
 MonoBehaviour:
@@ -3032,7 +3088,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 127.0.0.1
+  m_Text: 192.168.1.137
 --- !u!114 &11466428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3415,7 +3471,7 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: LobbyScene
+  m_OfflineScene: LobbySceneGameJam
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 192454, guid: 008ecb1b70bec724fa2cd34255b0d8f8, type: 2}
@@ -3453,13 +3509,13 @@ MonoBehaviour:
   matchSize: 4
   m_ShowLobbyGUI: 0
   m_MaxPlayers: 4
-  m_MaxPlayersPerConnection: 1
+  m_MaxPlayersPerConnection: 2
   m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 173472, guid: 756d3a6506f2f8241b4e8badde68567a, type: 2}
-  m_LobbyScene: LobbyScene
-  m_PlayScene: CompleteMainScene
+  m_GamePlayerPrefab: {fileID: 105208, guid: 0d36e02398be200499665f2ca34c32ca, type: 2}
+  m_LobbyScene: LobbySceneGameJam
+  m_PlayScene: gamePlayGameJAm
   lobbySlots: []
   minPlayer: 2
   topPanel: {fileID: 11424994}
@@ -4102,6 +4158,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140634}
+--- !u!222 &22224516
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154492}
 --- !u!222 &22228312
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -4861,7 +4923,7 @@ RectTransform:
   - {fileID: 22463094}
   - {fileID: 22453414}
   m_Father: {fileID: 22459552}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -200}
@@ -4906,6 +4968,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -200}
   m_SizeDelta: {x: 0, y: 880}
   m_Pivot: {x: 0, y: 1}
+--- !u!224 &22446406
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22452766}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
 --- !u!224 &22447222
 RectTransform:
   m_ObjectHideFlags: 1
@@ -4968,9 +5047,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 22446406}
   - {fileID: 22482056}
   m_Father: {fileID: 22459552}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -5064,10 +5144,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22418284}
-  - {fileID: 22452766}
+  - {fileID: 22442386}
   - {fileID: 22443498}
   - {fileID: 22488586}
-  - {fileID: 22442386}
+  - {fileID: 22452766}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -5323,7 +5403,7 @@ RectTransform:
   - {fileID: 22402218}
   - {fileID: 22400892}
   m_Father: {fileID: 22452766}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 465, y: -368}
