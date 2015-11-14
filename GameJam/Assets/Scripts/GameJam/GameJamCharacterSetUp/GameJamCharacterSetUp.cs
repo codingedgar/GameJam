@@ -78,8 +78,16 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
         this.gameObject.AddComponent<DestroyWall>();
 
     }
+	void addMessageClient()
+	{
+		if (isClient)
+		{
+			GameJamMessageClient gameJamMessageClient = GetComponent<GameJamMessageClient>();
+			gameJamMessageClient.m_color = m_Color == Color.red ? GameJamColors.Red : GameJamColors.Blue;
+		}
+	}
 
-    void SetUpIfClient()
+	void SetUpIfClient()
     {
         GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
 		addMessageClient();
