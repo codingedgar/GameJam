@@ -11,13 +11,17 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 	void addMessageClient()
 	{
 		GameJamMessageServer gms = FindObjectOfType<GameJamMessageServer>();
-		gms.Setup();
 		GameJamMessageClient gameJamMessageClient = GetComponent<GameJamMessageClient>();
-		gameJamMessageClient.m_color = (int)gjColor;
-		gameJamMessageClient._gms = gms;
 		GameJamMessageController[] gmcs = FindObjectsOfType<GameJamMessageController>();
-		foreach (GameJamMessageController gmc in gmcs)
-			gmc.Setup(gms);
+		gameJamMessageClient.m_color = (int)gjColor;
+		if (gms != null)
+		{
+			gms.Setup();
+			gameJamMessageClient._gms = gms;
+			foreach (GameJamMessageController gmc in gmcs)
+				gmc.Setup(gms);
+		}
+			
 	}
 
 	#endregion
