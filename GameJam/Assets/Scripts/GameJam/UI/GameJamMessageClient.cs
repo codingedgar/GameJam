@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class GameJamMessageClient : MonoBehaviour {
+public class GameJamMessageClient : NetworkBehaviour {
 
 	//public delegate void MessageBoxDelegate(int message, int color);
 
