@@ -523,6 +523,14 @@ Prefab:
       propertyPath: m_LocalPlayerAuthority
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11452464, guid: 1259781f674af6d4ca1cddcfedd7be53, type: 2}
+      propertyPath: m_SnapThreshold
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452464, guid: 1259781f674af6d4ca1cddcfedd7be53, type: 2}
+      propertyPath: m_SendInterval
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1259781f674af6d4ca1cddcfedd7be53, type: 2}
   m_IsPrefabParent: 0
