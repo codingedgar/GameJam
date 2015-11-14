@@ -72,7 +72,8 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
     void SetUpInit()
     {
         activateInputControllers(this.gameObject, isLocalPlayer);
-        activateMessageHandler();
+		activeAudioListener(this.gameObject, isLocalPlayer);
+		activateMessageHandler();
         CameraController(this.gameObject, isLocalPlayer, GameJamColors.Blue);
         this.gameObject.AddComponent<Teleport>();
         this.gameObject.AddComponent<DestroyWall>();
@@ -90,6 +91,11 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
     {
         characterObject.GetComponent<FirstPersonController>().enabled = value;
     }
+
+	static public void activeAudioListener(GameObject characterObject, bool value)
+	{
+		characterObject.GetComponentInChildren<AudioListener>().enabled = value;
+	}
 
     public void activateMessageHandler()
     {
