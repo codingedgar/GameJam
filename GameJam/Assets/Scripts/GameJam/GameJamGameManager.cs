@@ -67,6 +67,17 @@ public class GameJamGameManager : NetworkBehaviour
     static public void AddCharacter(GameObject tank, int playerNum, Color c, string name, int localID)
     {
         GameJamCharacterManager tmp = new GameJamCharacterManager();
+		string texturename = "";
+		if (c == Color.blue)
+			texturename = "BAE_Bot_Uv_03";
+		if (c == Color.green)
+			texturename = "BAE_Bot_Uv_04";
+		if (c == Color.red)
+			texturename = "BAE_Bot_Uv_05";
+		if (c == Color.yellow)
+			texturename = "BAE_Bot_Uv_06";
+		Debug.Log(texturename);
+		tank.GetComponentInChildren<MeshRenderer>().material.mainTexture = Resources.Load<Texture>("Player/" + texturename);
         tank.name = tank.name + playerNum.ToString();
         tmp.m_Instance = tank;
         tmp.m_PlayerNumber = playerNum;
