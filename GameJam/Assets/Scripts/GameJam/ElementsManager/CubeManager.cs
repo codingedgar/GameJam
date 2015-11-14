@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class CubeManager : MonoBehaviour {
+public class CubeManager : NetworkBehaviour {
 
     private List<GameObject> cubeElements;
     public static CubeManager instance;
@@ -50,7 +51,10 @@ public class CubeManager : MonoBehaviour {
 	public static void InactiveRigidbody(GameObject cube){
 		
 		Rigidbody cubeRb = cube.GetComponent<Rigidbody> ();
-		cubeRb.isKinematic = true;
+
+		//cubeRb.isKinematic = true;
+
+        cube.GetComponent<NetworkTransform>().rigidbody3D.isKinematic = true;
 
 	}
 }
