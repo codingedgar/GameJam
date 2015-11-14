@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+//using UnityEngine.Networking;
 
-public class Cubes : MonoBehaviour {
+public class Cubes : MonoBehaviour
+{
 
 
-	void Start () {
+    void Start()
+    {
 
         CubeManager.AddCube(this.gameObject);
-	}
-	
+    }
 
-	void Update () {
-	
-	}
+    //[Command]
+    //public void Mueveme()
+    //{
+
+    //}
 }
