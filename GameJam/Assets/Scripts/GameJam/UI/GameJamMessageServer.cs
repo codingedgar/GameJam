@@ -14,13 +14,13 @@ public class GameJamMessageServer : NetworkBehaviour
 	{
 		//if (NetworkClient.active)
 		//{
-			GameJamMessageClient[] clients = FindObjectsOfType<GameJamMessageClient>();
-			foreach (GameJamMessageClient client in clients)
-			{
+			//GameJamMessageClient[] clients = FindObjectsOfType<GameJamMessageClient>();
+			//foreach (GameJamMessageClient client in clients)
+			//{
 
-				client.EventSendMessageDelegate += updateColor;
-				Debug.Log(client.name);
-			}
+			//	//client.EventSendMessageDelegate += updateColor;
+			//	Debug.Log(client.name);
+			//}
 			updateValue = new int[messagesReference.Length];
 			for (int i = 0; i < updateValue.Length; i++)
 				updateValue[i] = 0;

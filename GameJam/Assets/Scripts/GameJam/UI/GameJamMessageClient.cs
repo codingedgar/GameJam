@@ -16,17 +16,17 @@ public class GameJamMessageClient : NetworkBehaviour {
 
 	public GameJamMessageServer server;
 
-	[ClientCallback]
-	void Start() {
-		server = FindObjectOfType<GameJamMessageServer>();//.updateColor(message, m_color);
-	}
+	//[ClientCallback]
+	//void Start() {
+	//	server = FindObjectOfType<GameJamMessageServer>();//.updateColor(message, m_color);
+	//}
 
 	[Command]
 	public void CmdSendBoxMessage(int message)
 	{
 		//Debug.Log(message + " " + m_color);
 		//EventSendMessageDelegate(message, (int)m_color);
-		server.updateColor(message, m_color);
+		FindObjectOfType<GameJamMessageServer>().updateColor(message, m_color);
 	}
 
 	[ClientCallback]
