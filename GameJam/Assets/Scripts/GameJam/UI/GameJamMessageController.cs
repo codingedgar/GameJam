@@ -9,6 +9,8 @@ public class GameJamMessageController : MonoBehaviour
     [SerializeField]
     int ID = 0;
 
+	int currentValue;
+
     public float lerpingTime = 1;
     public float showedTime = 3;
 
@@ -38,17 +40,17 @@ public class GameJamMessageController : MonoBehaviour
     {
         if (_gms == null)
             _gms = FindObjectOfType<GameJamMessageServer>();
-        if (this.ID == 1 && _gms.updateRed > 0)
-            checkForSpecificMessage(ref _gms.updateRed);
-        if (this.ID == 2 && _gms.updateBlue > 0)
-            checkForSpecificMessage(ref _gms.updateBlue);
-        if (this.ID == 3 && _gms.updateGreen > 0)
-            checkForSpecificMessage(ref _gms.updateGreen);
-        if (this.ID == 4 && _gms.updateYellow > 0)
-            checkForSpecificMessage(ref _gms.updateYellow);
+        if (this.ID == 1 && _gms.updateRed != currentValue)
+            checkForSpecificMessage(_gms.updateRed);
+        if (this.ID == 2 && _gms.updateBlue != currentValue)
+            checkForSpecificMessage(_gms.updateBlue);
+        if (this.ID == 3 && _gms.updateGreen != currentValue)
+            checkForSpecificMessage(_gms.updateGreen);
+        if (this.ID == 4 && _gms.updateYellow != currentValue)
+            checkForSpecificMessage(_gms.updateYellow);
     }
 
-    void checkForSpecificMessage(ref int messageValue)
+    void checkForSpecificMessage(int messageValue)
     {
         switch (messageValue)
         {
@@ -82,7 +84,8 @@ public class GameJamMessageController : MonoBehaviour
             default:
                 break;
         }
-        messageValue = 0;
+		currentValue = messageValue;
+        //messageValue = 0;
     }
 
     //[ClientRpc]
@@ -112,5 +115,15 @@ public class GameJamMessageController : MonoBehaviour
             yield return 0;
         }
         transform.localPosition = hidePosition;
-    }
+
+		if (this.ID == 1)
+			_gms.updateRed = 0;
+		if (this.ID == 2)
+			_gms.updateBlue = 0;
+		if (this.ID == 3)
+			_gms.updateGreen = 0;
+		if (this.ID == 4)
+			_gms.updateYellow = 0;
+		currentValue = 0;
+	}
 }
