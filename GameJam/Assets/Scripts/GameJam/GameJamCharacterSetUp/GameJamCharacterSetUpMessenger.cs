@@ -14,7 +14,6 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 		gms.Setup();
 		GameJamMessageClient gameJamMessageClient = GetComponent<GameJamMessageClient>();
 		gameJamMessageClient.m_color = (int)gjColor;
-		gameJamMessageClient.isLocalPlayer = isLocalPlayer;
 		gameJamMessageClient._gms = gms;
 		GameJamMessageController[] gmcs = FindObjectsOfType<GameJamMessageController>();
 		foreach (GameJamMessageController gmc in gmcs)

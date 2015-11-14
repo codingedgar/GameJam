@@ -10,7 +10,6 @@ public class GameJamMessageClient : NetworkBehaviour {
 	//public GameJamColors m_color = GameJamColors.Red;
 	//[SyncVar]
 	public int m_color;
-	public bool isLocalPlayer = false;
 
 	//[SyncEvent]
 	//public event MessageBoxDelegate EventSendMessageDelegate;
