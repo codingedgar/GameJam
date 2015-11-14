@@ -31,14 +31,14 @@ public class GameJamMessageController : MonoBehaviour
     public void Start()
     {
         //Gets the show and hide position
-        showPosition = transform.localPosition + Vector3.up * 100;
+        showPosition = transform.localPosition + Vector3.up * 120;
         hidePosition = transform.localPosition;
         transform.localPosition = hidePosition;
         _lerpingTime = 1f / lerpingTime;
 
 		icons = new Sprite[iconNames.Length];
 		for (int i = 0; i < icons.Length; i++)
-			icons[i] = Resources.Load<Sprite>("iCONS/" + iconNames[i] + ".png");
+			icons[i] = Resources.Load<Sprite>("iCONS/" + iconNames[i]);
     }
 
     public void Setup(GameJamMessageServer gms)
