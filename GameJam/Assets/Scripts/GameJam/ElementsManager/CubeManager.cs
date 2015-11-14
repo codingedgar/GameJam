@@ -3,27 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 
-public class CubeManager : NetworkBehaviour {
+public class CubeManager : NetworkBehaviour
+{
 
     private List<GameObject> cubeElements;
     public static CubeManager instance;
 
-    void Awake() {
+    void Awake()
+    {
 
         instance = this;
         cubeElements = new List<GameObject>();
     }
 
-    void Start () {
+    void Start()
+    {
 
-        
-	
-	}
-	
-	
-	void Update () {
-	
-	}
+
+
+    }
+
+
+    void Update()
+    {
+
+    }
 
     public static void AddCube(GameObject cube)
     {
@@ -35,26 +39,28 @@ public class CubeManager : NetworkBehaviour {
     public static GameObject FindCube(GameObject cube)
     {
 
-		GameObject cubeFind = instance.cubeElements.Find(x => x == cube);
+        GameObject cubeFind = instance.cubeElements.Find(x => x == cube);
 
-		return cubeFind;
+        return cubeFind;
     }
 
-	public static void ActiveRigidbody(GameObject cube){
+    public static void ActiveRigidbody(GameObject cube)
+    {
 
 
-		Rigidbody cubeRb = cube.GetComponent<Rigidbody> ();
-		cubeRb.isKinematic = false;
+        Rigidbody cubeRb = cube.GetComponent<NetworkTransform>().rigidbody3D;
+        cubeRb.isKinematic = false;
 
-	}
+    }
 
-	public static void InactiveRigidbody(GameObject cube){
-		
-		Rigidbody cubeRb = cube.GetComponent<Rigidbody> ();
+    public static void InactiveRigidbody(GameObject cube)
+    {
 
-		//cubeRb.isKinematic = true;
+        Rigidbody cubeRb = cube.GetComponent<NetworkTransform>().rigidbody3D;
 
-        cube.GetComponent<NetworkTransform>().rigidbody3D.isKinematic = true;
+        cubeRb.isKinematic = true;
 
-	}
+        //cube.GetComponent<NetworkTransform>().rigidbody3D.isKinematic = true;
+
+    }
 }
