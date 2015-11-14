@@ -5,14 +5,7 @@ public class MovePlatform : MonoBehaviour {
 
 	private bool nearPlatform;
 	GameObject platform;
-
-	enum direcction{
-
-		Up,
-		Dowm
-	}
 	
-
 	void Start () {
 	
 	}

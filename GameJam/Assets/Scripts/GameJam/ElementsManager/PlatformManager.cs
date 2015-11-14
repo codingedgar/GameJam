@@ -6,10 +6,7 @@ public class PlatformManager : MonoBehaviour {
 
 	private List<GameObject> platformMovable;
 	public static PlatformManager instance;
-	private Vector3 velocidad;
-	public GameObject pointUp;
-	public GameObject pointDown;
-
+	public bool up;
     void Awake() {
 
  		instance = this;
@@ -43,10 +40,17 @@ public class PlatformManager : MonoBehaviour {
 
 	public static void ActivePlatform(GameObject platform) {
 
-		Debug.Log ("acrtive");
+		instance.up = platform.GetComponent<Platform> ().up;
+		GameObject pointInit = platform.GetComponent<Platform> ().initPoint;
+		GameObject pointEnd = platform.GetComponent<Platform> ().endPoint;
 
-		instance.velocidad = new Vector3 (0f, 7f, 0f);
-		platform.transform.position = Vector3.Lerp (platform.transform.position, instance.pointUp.transform.position, 0.5f);
+		if (!instance.up) {
+			platform.transform.position = Vector3.Lerp (platform.transform.position, pointEnd.transform.position, 0.5f);
+			platform.GetComponent<Platform> ().up = true;
+		} else {
+			platform.transform.position = Vector3.Lerp (platform.transform.position, pointInit.transform.position, 0.5f);
+			platform.GetComponent<Platform> ().up = false;
+		}
 
     }
 	

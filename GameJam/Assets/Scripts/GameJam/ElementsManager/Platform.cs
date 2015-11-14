@@ -3,6 +3,16 @@ using System.Collections;
 
 public class Platform : MonoBehaviour {
 
+	public GameObject initPoint;
+	public GameObject endPoint;
+
+	public enum direccion{
+		up,
+		donw,
+		left,
+		right
+	}
+	public bool up;
 
 	void Start () {
 
