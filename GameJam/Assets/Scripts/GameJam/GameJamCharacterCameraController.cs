@@ -7,26 +7,43 @@ using UnityEngine;
 public class GameJamCharacterCameraController : MonoBehaviour
 {
     #region Variables
+    GameJamCharacterSetUp setUp = null;
     Camera thisCamera = null;
+    GameJamColors color = GameJamColors.White;
     #endregion
-    
-    #region Methods
 
+    #region Methods
+    
+    void Start()
+    {
+        Init();
+    }
 
     public void Init(bool isLocalPlayer, GameJamColors color)
     {
         thisCamera = this.GetComponentInChildren<Camera>();
         thisCamera.enabled = isLocalPlayer;
+
         if (isLocalPlayer)
         {
-            //thisCamera.gameObject.layer = LayerMask.NameToLayer(color.EnumToLayerName());
         }
         else
         {
-            //thisCamera.enabled = false;
+
         }
     }
 
+    public void Init()
+    {
+        setUp = this.GetComponent<GameJamCharacterSetUp>();
+        color = setUp.gjColor;
+        setLayerInCamera(color);
+    }
+
+    void setLayerInCamera(GameJamColors color)
+    {
+        thisCamera.cullingMask = color.AllButThisCullingMask();
+    }
 
     #endregion
 }

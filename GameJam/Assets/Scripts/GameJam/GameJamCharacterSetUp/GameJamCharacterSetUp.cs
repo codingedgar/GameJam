@@ -75,13 +75,15 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
         activateMessageHandler();
         CameraController(this.gameObject, isLocalPlayer, GameJamColors.Blue);
         this.gameObject.AddComponent<Teleport>();
+        this.gameObject.AddComponent<DestroyWall>();
+		addMessageClient();
 
-    }
+	}
+	
 
-    void SetUpIfClient()
+	void SetUpIfClient()
     {
         GameJamGameManager.AddCharacter(gameObject, m_PlayerNumber, m_Color, m_PlayerName, m_LocalID);
-		addMessageClient();
     }
 
     static public void activateInputControllers(GameObject characterObject, bool value)

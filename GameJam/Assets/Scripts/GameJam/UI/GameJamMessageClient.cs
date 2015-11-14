@@ -4,21 +4,50 @@ using UnityEngine.Networking;
 
 public class GameJamMessageClient : NetworkBehaviour {
 
-	public delegate void MessageBoxDelegate(int message, int color);
+	//public delegate void MessageBoxDelegate(int message, int color);
 
-	[SyncVar]
-	public GameJamColors m_color = GameJamColors.Red;
+	//[SyncVar]
+	//public GameJamColors m_color = GameJamColors.Red;
+	//[SyncVar]
+	public int m_color;
 
-	[SyncEvent]
-	public event MessageBoxDelegate EventSendMessageDelegate;
+	//[SyncEvent]
+	//public event MessageBoxDelegate EventSendMessageDelegate;
+
+	public GameJamMessageServer _gms;
+
+	//[ClientCallback]
+	//void Start() {
+	//	server = FindObjectOfType<GameJamMessageServer>();//.updateColor(message, m_color);
+	//}
+
+	void Setup(GameJamMessageServer gms)
+	{
+		_gms = gms;
+	}
 
 	[Command]
-	public void CmdSendBoxMessage(int message) {
-		EventSendMessageDelegate(message, (int)m_color);
+	public void CmdSendBoxMessage(int message)
+	{
+		//Debug.Log(message + " " + m_color);
+		//EventSendMessageDelegate(message, (int)m_color);
+
+		if (_gms == null)
+			_gms = FindObjectOfType<GameJamMessageServer>();
+		Debug.Log(m_color);
+		if(m_color == 1)
+			_gms.updateRed = message;
+		if (m_color == 2)
+			_gms.updateBlue = message;
+		if (m_color == 3)
+			_gms.updateGreen = message;
+		if (m_color == 4)
+			_gms.updateYellow = message;
 	}
 
 	[ClientCallback]
 	void Update() {
+
 		if (!isLocalPlayer)
 			return;
 

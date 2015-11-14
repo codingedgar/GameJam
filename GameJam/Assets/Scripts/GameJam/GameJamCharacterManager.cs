@@ -30,10 +30,10 @@ public class GameJamCharacterManager
     public TankShooting m_Shooting;
     public TankHealth m_Health;
     public GameJamCharacterSetUp m_Setup;
-    
+
     public void Setup()
     {
-        
+
         //setup is use for diverse Network Related sync
         m_Setup = m_Instance.GetComponent<GameJamCharacterSetUp>();
         m_Setup.m_Color = m_PlayerColor;
@@ -62,7 +62,7 @@ public class GameJamCharacterManager
         m_Shooting.m_localID = m_LocalPlayerID;
 
     }
-    
+
     // Used during the phases of the game where the player shouldn't be able to control their tank.
     public void DisableControl()
     {
@@ -98,15 +98,18 @@ public class GameJamCharacterManager
     // Used at the start of each round to put the tank into it's default state.
     public void Reset()
     {
-        m_Movement.SetDefaults();
-        m_Shooting.SetDefaults();
-        m_Health.SetDefaults();
 
-        if (m_Movement.hasAuthority)
-        {
-            m_Movement.m_Rigidbody.position = m_SpawnPoint.position;
-            m_Movement.m_Rigidbody.rotation = m_SpawnPoint.rotation;
-        }
+        if (this.m_Setup.hasAuthority)
+            this.m_Instance.transform.position = m_SpawnPoint.position;
+        //m_Movement.SetDefaults();
+        //m_Shooting.SetDefaults();
+        //m_Health.SetDefaults();
+
+        //if (m_Movement.hasAuthority)
+        //{
+        //    m_Movement.m_Rigidbody.position = m_SpawnPoint.position;
+        //    m_Movement.m_Rigidbody.rotation = m_SpawnPoint.rotation;
+        //}
     }
 }
 
