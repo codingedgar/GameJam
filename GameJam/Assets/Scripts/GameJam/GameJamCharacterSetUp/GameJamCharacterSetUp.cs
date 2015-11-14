@@ -75,9 +75,8 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
 		activeAudioListener(this.gameObject, isLocalPlayer);
 		activateMessageHandler();
         CameraController(this.gameObject, isLocalPlayer, GameJamColors.Blue);
-        this.gameObject.AddComponent<Teleport>();
-        this.gameObject.AddComponent<DestroyWall>();
-		addMessageClient();
+        addMessageClient();
+        AddSkills();
 
 	}
 	
@@ -102,4 +101,31 @@ public partial class GameJamCharacterSetUp : NetworkBehaviour
         Messenger.Broadcast<Color>("activateMessageHandler", m_Color);
     }
     #endregion
+
+    void AddSkills() {
+
+        if (isLocalPlayer)
+        {
+            switch (gjColor)
+            {
+                case GameJamColors.White:
+                    break;
+                case GameJamColors.Red:
+                    this.gameObject.AddComponent<DestroyWall>();
+                    break;
+                case GameJamColors.Blue:
+                    this.gameObject.AddComponent<Teleport>();
+                    break;
+                case GameJamColors.Green:
+                    this.gameObject.AddComponent<MoveCubes>();
+                    break;
+                case GameJamColors.Yellow:
+                    this.gameObject.AddComponent<MovePlatform>();
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+    }
 }
