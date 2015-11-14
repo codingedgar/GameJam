@@ -12,7 +12,7 @@ public enum GameJamColors
     Blue,
     Green,
     Yellow,
-    
+
 }
 
 public static class GameJamColorsExtentions
@@ -32,6 +32,33 @@ public static class GameJamColorsExtentions
     public static GameJamColors ColorToEnum(this GameJamColors enumerator, Color color)
     {
         return ColorToEnum(color);
+    }
+
+    public static int AllButThisCullingMask(this GameJamColors color)
+    {
+        int layerMask = 0;
+
+        GameJamColors[] arrayMalandro;
+
+        arrayMalandro = Enum.GetValues(typeof(GameJamColors)).Cast<GameJamColors>().ToArray();
+        
+        for (int i = arrayMalandro.Length - 1; i >= 0; i--)
+        {
+            if (arrayMalandro[i] != color)
+            layerMask = (layerMask | arrayMalandro[i].enumToLayerMask());
+                
+        }
+        
+        return layerMask = ~layerMask;
+    }
+
+    public static int enumToLayerMask(this GameJamColors color)
+    {
+        int layer;
+
+        layer = 1 << LayerMask.NameToLayer(color.EnumToLayerName());
+
+        return layer;
     }
 
     public static string EnumToLayerName(this GameJamColors enumerator)
