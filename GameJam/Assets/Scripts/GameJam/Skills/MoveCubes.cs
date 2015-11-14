@@ -12,15 +12,18 @@ public class MoveCubes : MonoBehaviour {
 	
 
 	void Update () {
+
+		ActivateCube ();
 	
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-		cube = BrokenWallManager.FindBrokenWall(other.gameObject);
+		cube = CubeManager.FindCube(other.gameObject);
 		
 		if (other.gameObject == cube)
 		{
+			Debug.Log("encontre el cube");
 			nearCube = true;
 		}
 	}
@@ -28,9 +31,10 @@ public class MoveCubes : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 		
-		if (other.gameObject == BrokenWallManager.FindBrokenWall(other.gameObject))
+		if (other.gameObject == CubeManager.FindCube(other.gameObject))
 		{
 			nearCube = false;
+			CubeManager.InactiveRigidbody(other.gameObject);
 		}
 	}
 	
@@ -39,7 +43,7 @@ public class MoveCubes : MonoBehaviour {
 		
 		if (Input.GetKeyDown(KeyCode.P) && nearCube)
 		{
-			CubeManager.MoveCube(cube);
+			CubeManager.ActiveRigidbody(cube);
 		}
 	}
 }
