@@ -32,13 +32,15 @@ public class GameJamMessageController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (id == 0 && _gms.updateRed > 0)
+		if (_gms == null)
+			_gms = FindObjectOfType<GameJamMessageServer>();
+		if (id == 1 && _gms.updateRed > 0)
 			checkForSpecificMessage(ref _gms.updateRed);
-		if (id == 1 && _gms.updateBlue > 0)
+		if (id == 2 && _gms.updateBlue > 0)
 			checkForSpecificMessage(ref _gms.updateBlue);
-		if (id == 2 && _gms.updateGreen > 0)
+		if (id == 3 && _gms.updateGreen > 0)
 			checkForSpecificMessage(ref _gms.updateGreen);
-		if (id == 3 && _gms.updateYellow > 0)
+		if (id == 4 && _gms.updateYellow > 0)
 			checkForSpecificMessage(ref _gms.updateYellow);
 	}
 

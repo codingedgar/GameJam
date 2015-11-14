@@ -31,11 +31,23 @@ public class GameJamMessageClient : NetworkBehaviour {
 	{
 		//Debug.Log(message + " " + m_color);
 		//EventSendMessageDelegate(message, (int)m_color);
-		_gms.updateRed = message;
+
+		if (_gms == null)
+			_gms = FindObjectOfType<GameJamMessageServer>();
+		Debug.Log(m_color);
+		if(m_color == 1)
+			_gms.updateRed = message;
+		if (m_color == 2)
+			_gms.updateBlue = message;
+		if (m_color == 3)
+			_gms.updateGreen = message;
+		if (m_color == 4)
+			_gms.updateYellow = message;
 	}
 
 	//[ClientCallback]
 	void Update() {
+
 		if (!isLocalPlayer)
 			return;
 
