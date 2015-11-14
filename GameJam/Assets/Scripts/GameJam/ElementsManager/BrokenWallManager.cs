@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
 public class BrokenWallManager : MonoBehaviour {
 
@@ -40,7 +41,7 @@ public class BrokenWallManager : MonoBehaviour {
 
     public static void BreakWall(GameObject wall) {
 
-        wall.SetActive(false);
+        wall.GetComponent<NetworkTransform>().gameObject.SetActive(false);
 
     }
 

@@ -1,28 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Networking;
 
-public class PortalManager : MonoBehaviour {
+public class PortalManager : MonoBehaviour
+{
 
     private List<GameObject> portalsElement;
     public static PortalManager instance;
 
-    void Awake() {
+    void Awake()
+    {
 
         instance = this;
         portalsElement = new List<GameObject>();
 
     }
 
-	void Start () {
-	
+    void Start()
+    {
 
 
-	}
-	
-	void Update () {
-	
-	}
+
+    }
+
+    void Update()
+    {
+
+    }
 
     public static void AddPortals(GameObject portal)
     {
@@ -31,14 +36,29 @@ public class PortalManager : MonoBehaviour {
 
     }
 
-    public static void ActivatePortal(GameObject portalEnter, GameObject userPortal){
+    public static void ActivatePortal(GameObject portalEnter, GameObject userPortal)
+    {
 
         int portalOutId = portalEnter.GetComponent<Portals>().portalOut;
         GameObject portalOut = instance.portalsElement.Find(x => x.GetComponent<Portals>().portalIn == portalOutId);
         userPortal.transform.position = portalOut.transform.position;
+
+        transporarATodos(portalOut.transform.position);
     }
 
-    public static GameObject FindPortal(GameObject portal) {
+    static void transporarATodos(Vector3 asdf)
+    {
+        var todos = FindObjectsOfType<GameJamCharacterSetUp>();
+
+        for (int i = todos.Length - 1; i >= 0; i--)
+        {
+            todos[i].gameObject.GetComponent<NetworkTransform>().rigidbody3D.transform.position = asdf;
+        }
+    }
+
+
+    public static GameObject FindPortal(GameObject portal)
+    {
 
         GameObject portalFind = instance.portalsElement.Find(x => x == portal);
 
