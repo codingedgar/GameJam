@@ -31,16 +31,26 @@ public class CubeManager : MonoBehaviour {
 
     }
 
-    public static void FindCube(GameObject cube)
+    public static GameObject FindCube(GameObject cube)
     {
 
-		GameObject portalFind = instance.cubeElements.Find(x => x == cube);
+		GameObject cubeFind = instance.cubeElements.Find(x => x == cube);
+
+		return cubeFind;
     }
 
-	public static void MoveCube(GameObject cube){
+	public static void ActiveRigidbody(GameObject cube){
 
-		cube.transform.position = cube.transform.position + new Vector3 (1,1,1); 
+
+		Rigidbody cubeRb = cube.GetComponent<Rigidbody> ();
+		cubeRb.isKinematic = false;
 
 	}
 
+	public static void InactiveRigidbody(GameObject cube){
+		
+		Rigidbody cubeRb = cube.GetComponent<Rigidbody> ();
+		cubeRb.isKinematic = true;
+
+	}
 }
