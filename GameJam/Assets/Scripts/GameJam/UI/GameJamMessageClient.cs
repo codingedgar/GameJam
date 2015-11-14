@@ -2,13 +2,13 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class GameJamMessageClient : NetworkBehaviour {
+public class GameJamMessageClient : MonoBehaviour {
 
 	//public delegate void MessageBoxDelegate(int message, int color);
 
 	//[SyncVar]
 	//public GameJamColors m_color = GameJamColors.Red;
-	[SyncVar]
+	//[SyncVar]
 	public int m_color;
 
 	//[SyncEvent]
@@ -21,7 +21,7 @@ public class GameJamMessageClient : NetworkBehaviour {
 	//	server = FindObjectOfType<GameJamMessageServer>();//.updateColor(message, m_color);
 	//}
 
-	[Command]
+	//[Command]
 	public void CmdSendBoxMessage(int message)
 	{
 		//Debug.Log(message + " " + m_color);
@@ -29,10 +29,10 @@ public class GameJamMessageClient : NetworkBehaviour {
 		FindObjectOfType<GameJamMessageServer>().updateColor(message, m_color);
 	}
 
-	[ClientCallback]
+	//[ClientCallback]
 	void Update() {
-		if (!isLocalPlayer)
-			return;
+		//if (!isLocalPlayer)
+		//	return;
 
 		if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
 			CmdSendBoxMessage(0);
