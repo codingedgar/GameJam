@@ -78,5 +78,7 @@ public class GameJamMessageServer : NetworkBehaviour
 	{
 		if (updateValue != null)
 			updateValue[color - 1] = message;
+		else
+			Debug.Log("LOL");
 	}
 }

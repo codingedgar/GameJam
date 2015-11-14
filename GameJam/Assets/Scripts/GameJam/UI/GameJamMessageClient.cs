@@ -4,24 +4,29 @@ using UnityEngine.Networking;
 
 public class GameJamMessageClient : NetworkBehaviour {
 
-	public delegate void MessageBoxDelegate(int message, int color);
+	//public delegate void MessageBoxDelegate(int message, int color);
 
 	//[SyncVar]
 	//public GameJamColors m_color = GameJamColors.Red;
 	[SyncVar]
 	public int m_color;
 
-	[SyncEvent]
-	public event MessageBoxDelegate EventSendMessageDelegate;
+	//[SyncEvent]
+	//public event MessageBoxDelegate EventSendMessageDelegate;
+
+	public GameJamMessageServer server;
+
+	[ClientCallback]
+	void Start() {
+		server = FindObjectOfType<GameJamMessageServer>();//.updateColor(message, m_color);
+	}
 
 	[Command]
 	public void CmdSendBoxMessage(int message)
 	{
 		//Debug.Log(message + " " + m_color);
 		//EventSendMessageDelegate(message, (int)m_color);
-		GameJamMessageServer[] servers = FindObjectsOfType<GameJamMessageServer>();
-		foreach(GameJamMessageServer server in servers)
-			server.updateColor(message, m_color);
+		server.updateColor(message, m_color);
 	}
 
 	[ClientCallback]
