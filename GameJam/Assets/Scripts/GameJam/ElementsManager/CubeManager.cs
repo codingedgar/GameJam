@@ -31,10 +31,16 @@ public class CubeManager : MonoBehaviour {
 
     }
 
-    public static void MoveCube(GameObject cubeSelect)
+    public static void FindCube(GameObject cube)
     {
 
-        GameObject portalFind = instance.cubeElements.Find(x => x == cubeSelect);
+		GameObject portalFind = instance.cubeElements.Find(x => x == cube);
     }
+
+	public static void MoveCube(GameObject cube){
+
+		cube.transform.position = cube.transform.position + new Vector3 (1,1,1); 
+
+	}
 
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cube : MonoBehaviour {
+public class Cubes : MonoBehaviour {
 
 
 	void Start () {
