@@ -6,6 +6,9 @@ public class PlatformManager : MonoBehaviour {
 
 	private List<GameObject> platformMovable;
 	public static PlatformManager instance;
+	private Vector3 velocidad;
+	public GameObject pointUp;
+	public GameObject pointDown;
 
     void Awake() {
 
@@ -40,8 +43,11 @@ public class PlatformManager : MonoBehaviour {
 
 	public static void ActivePlatform(GameObject platform) {
 
-		Debug.Log ("Active plataforma");
+		Debug.Log ("acrtive");
+
+		instance.velocidad = new Vector3 (0f, 7f, 0f);
+		platform.transform.position = Vector3.Lerp (platform.transform.position, instance.pointUp.transform.position, 0.5f);
 
     }
-
+	
 }

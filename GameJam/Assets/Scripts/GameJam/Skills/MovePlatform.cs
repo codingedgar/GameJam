@@ -6,6 +6,13 @@ public class MovePlatform : MonoBehaviour {
 	private bool nearPlatform;
 	GameObject platform;
 
+	enum direcction{
+
+		Up,
+		Dowm
+	}
+	
+
 	void Start () {
 	
 	}
@@ -19,10 +26,9 @@ public class MovePlatform : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		platform = PlatformManager.FindPlatform(other.gameObject);
+		platform = PlatformManager.FindPlatform (other.gameObject);
 		
-		if (other.gameObject == platform)
-		{
+		if (other.gameObject == platform) {
 			nearPlatform = true;
 		}
 	}
