@@ -14,6 +14,10 @@ public class GameJamMessageController : MonoBehaviour
     public float lerpingTime = 1;
     public float showedTime = 3;
 
+	public Image icon;
+
+	public string[] iconNames;
+
     public Text messageHolder;
     private Vector3 hidePosition;
     private Vector3 showPosition;
@@ -22,6 +26,8 @@ public class GameJamMessageController : MonoBehaviour
 
     private GameJamMessageServer _gms;
 
+	private Sprite[] icons;
+
     public void Start()
     {
         //Gets the show and hide position
@@ -29,6 +35,10 @@ public class GameJamMessageController : MonoBehaviour
         hidePosition = transform.localPosition;
         transform.localPosition = hidePosition;
         _lerpingTime = 1f / lerpingTime;
+
+		icons = new Sprite[iconNames.Length];
+		for (int i = 0; i < icons.Length; i++)
+			icons[i] = Resources.Load<Sprite>("iCONS/" + iconNames[i] + ".png");
     }
 
     public void Setup(GameJamMessageServer gms)
@@ -52,6 +62,7 @@ public class GameJamMessageController : MonoBehaviour
 
     void checkForSpecificMessage(int messageValue)
     {
+		icon.sprite = icons[messageValue];
         switch (messageValue)
         {
             case 1:
