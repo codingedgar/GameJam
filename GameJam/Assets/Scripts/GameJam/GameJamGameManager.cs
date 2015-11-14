@@ -165,7 +165,7 @@ public class GameJamGameManager : NetworkBehaviour
     void RpcRoundStarting()
     {
         // As soon as the round starts reset the tanks and make sure they can't move.
-        ResetAllTanks();
+        ResetAllCharacters();
         DisableTankControl();
 
         // Snap the camera's zoom and position to something appropriate for the reset tanks.
@@ -197,7 +197,7 @@ public class GameJamGameManager : NetworkBehaviour
 
             //sometime, synchronization lag behind because of packet drop, so we make sure our tank are reseted
             if (elapsedTime / wait < 0.5f)
-                ResetAllTanks();
+                ResetAllCharacters();
 
             yield return null;
         }
@@ -374,13 +374,13 @@ public class GameJamGameManager : NetworkBehaviour
 
 
     // This function is used to turn all the tanks back on and reset their positions and properties.
-    private void ResetAllTanks()
+    private void ResetAllCharacters()
     {
-        //for (int i = 0; i < mCharacters.Count; i++)
-        //{
-        //    mCharacters[i].m_SpawnPoint = m_SpawnPoint[mCharacters[i].m_Setup.m_PlayerNumber];
-        //    mCharacters[i].Reset();
-        //}
+        for (int i = 0; i < mCharacters.Count; i++)
+        {
+            mCharacters[i].m_SpawnPoint = m_SpawnPoint[mCharacters[i].m_Setup.m_PlayerNumber];
+            mCharacters[i].Reset();
+        }
     }
 
 
