@@ -3470,6 +3470,22 @@ Prefab:
       propertyPath: m_AssetId.i15
       value: 123
       objectReference: {fileID: 0}
+    - target: {fileID: 11407738, guid: 4cd4ce647761e7e4f92bf2c6fcc1f47b, type: 2}
+      propertyPath: ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432826, guid: 4cd4ce647761e7e4f92bf2c6fcc1f47b, type: 2}
+      propertyPath: ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490490, guid: 4cd4ce647761e7e4f92bf2c6fcc1f47b, type: 2}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475800, guid: 4cd4ce647761e7e4f92bf2c6fcc1f47b, type: 2}
+      propertyPath: ID
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11417680, guid: 4cd4ce647761e7e4f92bf2c6fcc1f47b, type: 2}
     - {fileID: 11487408, guid: 4cd4ce647761e7e4f92bf2c6fcc1f47b, type: 2}
