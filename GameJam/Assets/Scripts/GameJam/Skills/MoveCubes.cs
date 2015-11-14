@@ -23,7 +23,6 @@ public class MoveCubes : MonoBehaviour {
 		
 		if (other.gameObject == cube)
 		{
-			Debug.Log("encontre el cube");
 			nearCube = true;
 		}
 	}

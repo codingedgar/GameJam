@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Plataform : MonoBehaviour {
+public class Platform : MonoBehaviour {
 
 
 	void Start () {
 
-        BrokenWallManager.AddBrokenWall(this.gameObject);
+		PlatformManager.AddPlatform(this.gameObject);
 
     }
 	
